@@ -18,7 +18,7 @@ if (i == j)
 continue;
 }
 putchar(i % 10);
-putchar((j % 10) + 1);
+putchar((j + 1) % 10);
 putchar(',');
 putchar(' ');
 }}
