@@ -21,6 +21,6 @@ putchar((j % 10) + 1);
 putchar(',');
 }
 putchar('\n');
-}
 
 return (0);
+}
