@@ -5,6 +5,8 @@
 /* more headers goes there */
 
 /* betty style doc for function main goes there */
+/* your code goes there */
+
 int main(void)
 {
 /* this is main function body*/
