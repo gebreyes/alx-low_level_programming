@@ -1,4 +1,4 @@
-nclude <stdio.h>
+#include <stdio.h>
 
 /**
  * main - Entry point
@@ -13,5 +13,6 @@ if (lower != 'e' && lower != 'q')
 putchar(lower);
 
 putchar('\n');
+
 return (0);
 }
