@@ -9,9 +9,6 @@
  */
 int main(void)
 {
-	
-/* this is main function body*/
-
 int n;
 
 srand(time(0));
