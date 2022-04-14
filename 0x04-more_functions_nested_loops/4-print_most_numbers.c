@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_numbers - prints 01356789\n
+ * print_most_numbers - prints
  *
  * Return: void
  */
