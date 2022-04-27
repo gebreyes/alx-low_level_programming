@@ -1,5 +1,6 @@
-#ifndef GYES
-#define GYES
+#ifndef GYES_H
+#define GYES_H
+
 int _putchar(char c);
 void _puts_recursion(char *s);
 void _print_rev_recursion(char *s);
@@ -13,4 +14,5 @@ int _prime(int n, int i);
 int is_palindrome(char *s);
 int pali(char *s, char *e);
 int wildcmp(char *s1, char *s2);
+
 #endif
