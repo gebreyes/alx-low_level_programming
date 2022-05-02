@@ -1,12 +1,21 @@
 #include "yes.h"
 /**
- * _strchr - returns a pointer to the first occurence of the
- * character c in the string s
- * @c: parameter for c to return
- * @s: string to search character
- * Return: pointer to first occurence of character c or null if not found
+ * _strchr - locates character in string
+ * @s: string
+ * @b: character to locate
+ * Return: pointer to the first occurrence of the character
  */
-char *_strchr(char *s, char c)
+char *_strchr(char *s, char b)
 {
-return(s);
+	while (*s != 0)
+	{
+		if (*s == b)
+			return (s);
+		s++;
+	}
+
+	if (*s == b)
+		return (s);
+
+	return ('\0');
 }

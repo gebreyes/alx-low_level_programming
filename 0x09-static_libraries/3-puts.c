@@ -1,17 +1,17 @@
 #include "yes.h"
-/**
- * _puts - prints string
- * Return: length of string
- * @str: string
- */
-void _puts(char *str)
-{
-	int c = 0;
 
-	while (str[c] != 0)
+/**
+ * _puts - a function that prints a string
+ * @c: string input
+ * Return: string
+ */
+void _puts(char *c)
+{
+	int i;
+
+	for (i = 0; c[i] != '\0'; i++)
 	{
-		_putchar(str[c]);
-		c++;
+		_putchar(c[i]);
 	}
 	_putchar('\n');
 }

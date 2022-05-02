@@ -1,27 +1,27 @@
 #include "yes.h"
 /**
- * _strncat - concatenates two strings.
- * @dest: destination.
- * @src: source.
- * @n: amount of bytes used from src.
- * Return: the pointer to dest.
+ * _strncat - concatenates two strings
+ * @dest: dest string
+ * @src: src string
+ * @n: limit
+ * Return: pointer to resulting string
  */
 char *_strncat(char *dest, char *src, int n)
 {
-int count = 0, count2 = 0;
+	int s = 0, i = 0;
 
-while (*(dest + count) != '\0')
-{
-count++;
-}
+	while (*(dest + s) != 0)
+	{
+		s++;
+	}
+	while (*(src + i) != 0)
+	{
+		*(dest + s + i)	= *(src + i);
+		if (i >= n)
+			break;
+		i++;
+	}
 
-while (count2 < n)
-{
-*(dest + count) = *(src + count2);
-if (*(src + count2) == '\0')
-break;
-count++;
-count2++;
-}
-return (dest);
+	*(dest + s + i) = 0;
+	return (dest);
 }

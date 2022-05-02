@@ -1,19 +1,19 @@
 #include "yes.h"
 
 /**
- * _strlen - prints the length of char pointer.
- *@s: pointer to character array.
- * Return: Always 0.
+ * _strlen - a function that returns the length of a string
+ * @s: char input
+ * Return: length of the input string
  */
-
 int _strlen(char *s)
 {
-int i = 0;
+	int i = 1, sum = 0;
+	char pl = s[0];
 
-while (*s != '\0')
-{
-i++;
-s++;
-}
-return (i);
+	while (pl != '\0')
+	{
+		sum++;
+		pl = s[i++];
+	}
+	return (sum);
 }
