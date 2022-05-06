@@ -1,126 +1,98 @@
 #include "yes.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /**
- * main - multiplies two positive numbers
- * @argc: num of args
- * @argv: pointer to args
- * Return: int status
- */
-int main(int argc, char *argv[])
+* _isNum - check if is a number
+*@num: string to check
+*Return: 1 is numm, 0 not num
+*/
+int _isNum(char *num)
 {
-	unsigned int n1, n2, result;
+	int i;
 
-	int j = 1;
-
-	if (argc != 3)
+	for (i = 0; num[i] != '\0'; i++)
 	{
-		print_string("Error in args\n");
-		exit(98);
-	}
-
-	while (j < argc)
-	{
-		if (only_nums(argv[j]) == 0)
-		{
-			print_string("Error in digits\n");
-			exit(98);
-		}
-		j++;
-	}
-
-	n1 = _atoi(argv[1]);
-	n2 = _atoi(argv[2]);
-	result = n1 * n2;
-	print_int(result);
-	_putchar('\n');
-	return (0);
-}
-/**
- * only_nums - checks for non-digit symbols
- * @s: string
- * Return: 1 if test passed 0 otherwise
- */
-int only_nums(char *s)
-{
-	int c = 0;
-
-	while (*(s + c) != 0)
-	{
-		if (*(s + c) < 48 || *(s + c) > 57)
-		{
+		if (num[i] < '0' || num[i] > '9')
 			return (0);
-		}
-		c++;
 	}
-	if (c == 0)
-		return (0);
 	return (1);
 }
+
 /**
- * _atoi - convert string to int
- * Return: the int
- * @s: string
- */
-int _atoi(char *s)
+* *_memset - copies a character to the firstn characters of the string pointed
+*@s: original string
+*@b: value to remplace
+*@n: number of bytes
+*Return: s (string modify)
+*/
+char *_memset(char *s, char b, unsigned int n)
 {
-	int size = 0, i, j, sign = 1;
+	unsigned int i;
 
-	int number = 0;
+	for (i = 0; i < n; i++)
+		s[i] = b;
+	return (s);
+}
 
-	while (s[size] != 0)
+/**
+* _strlen - returns the lenght of a string
+*@s: poiter of character
+*Return: the length of a string
+*/
+int _strlen(char *s)
+{
+	int len;
+
+	len = 0;
+	while (*(s + len) != '\0')
+		len++;
+	return (len);
+}
+
+/**
+* main - multiple 2 positive numbers
+*@argc: argument counter
+*@argv: number to multiply
+*Return: 0 (success)
+*/
+int main(int argc, char *argv[])
+{
+	int length, c, prod, i, j, l1, l2;
+	int *res;
+
+	if ((argc != 3 || !(_isNum(argv[1]))) || !(_isNum(argv[2])))
+		puts("Error"), exit(98);
+	l1 = _strlen(argv[1]), l2 = _strlen(argv[2]);
+	length = l1 + l2;
+	res = calloc(length, sizeof(int *));
+	if (res == NULL)
+		puts("Error"), exit(98);
+	for (i = l2 - 1; i > -1; i--)
 	{
-		size++;
-	}
-
-	for (i = 0; i < size; i++)
-	{
-		if (s[i] >= 48 && s[i] <= 57)
+		c = 0;
+		for (j = l1; j > -1; j--)
 		{
-			int pow = 1;
-
-			j = i;
-			while (s[j] >= 48 && s[j] <= 57)
+			prod = (argv[2][i] - '0') * (argv[1][j] - '0');
+			c = (prod / 10);
+			res[(i + j) + 1] += (prod % 10);
+			if (res[(i + j) + 1] > 9)
 			{
-				j++;
+				res[i + j] += res[(i + j) + 1] / 10;
+				res[(i + j) + 1] = res[(i + j) + 1] % 10;
 			}
-			j--;
-			while (j >= i)
-			{
-				number += (s[j] - '0') * pow;
-				pow *= 10;
-				j--;
-			}
-			break;
+			res[(i + j) + 1] += c;
 		}
-		else if (s[i] == 45)
-			sign = -sign;
 	}
-	if (sign < 0)
-		number = -number;
-	return (number);
-}
-/**
- * print_string - prints string with putchar
- * @s: string
- * Return: void
- */
-void print_string(char s[])
-{
-	int c = 0;
 
-	while (s[c] != 0)
-	{
-		_putchar(s[c]);
-		c++;
-	}
-}
-/**
- * print_int - prints integer
- * @n: integer to print
- */
-void print_int(unsigned int n)
-{
-	if (n / 10)
-		print_int(n / 10);
-	_putchar(n % 10 + '0');
+	if (res[0] == 0)
+		i = 1;
+	else
+		i = 0;
+	for (; i < length; i++)
+		printf("%d", res[i]);
+
+	printf("\n");
+	free(res);
+	return (0);
 }
