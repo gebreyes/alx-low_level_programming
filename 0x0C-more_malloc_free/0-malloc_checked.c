@@ -1,7 +1,8 @@
+#include "yes.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
-#include "yes.h"
+
 /**
  * malloc_checked - Entry Point
  * @b: input amount
