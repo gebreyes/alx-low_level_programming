@@ -1,21 +1,18 @@
-#include "yes.h"
-#include <stdio.h>
 #include <stdlib.h>
-
+#include <stdio.h>
+#include "yes.h"
 /**
-  * malloc_checked - fills memory with a constant byte
-  * @b: is the size of the pointer
-  * Return: a void pointer
-  */
+ * malloc_checked - Entry Point
+ * @b: input amount
+ * Return: pointer to new mem
+ */
 void *malloc_checked(unsigned int b)
 {
-	void *s;
+	void *n;
 
-	s = malloc(b);
-	if (s == NULL)
-	{
+	n = malloc(b);
+
+	if (n == NULL)
 		exit(98);
-		return (s);
-	}
-	return (s);
+	return (n);
 }
