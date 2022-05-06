@@ -2,19 +2,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * malloc_checked - Entry Point
- * @b: input amount
- * Return: pointer to new mem
+ * malloc_checked - creates an array of integers.
+ * @b: input.
+ * Return: Output.
  */
 void *malloc_checked(unsigned int b)
 {
-	void *n;
+	void *y = malloc(b);
 
-	n = malloc(b);
-
-	if (n == NULL)
+	if (y == NULL)
 	{
 		exit(98);
 	}
-	return (n);
+	return (y);
 }
