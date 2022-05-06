@@ -1,0 +1,1 @@
+allocates memory using malloc
