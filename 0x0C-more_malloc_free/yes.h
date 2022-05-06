@@ -1,5 +1,6 @@
-#ifndef YES
-#define YES
+#ifndef YES_H
+#define YES_H
+
 int _putchar(char c);
 void *malloc_checked(unsigned int b);
 char *string_nconcat(char *s1, char *s2, unsigned int n);
@@ -11,4 +12,5 @@ int _atoi(char *s);
 void print_string(char s[]);
 void print_int(unsigned int n);
 int _strlen_recursion(char *s);
+
 #endif
