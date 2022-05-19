@@ -1,51 +1,47 @@
 #include <stdlib.h>
 #include <string.h>
 #include "lists.h"
-
 /**
-  * add_node - Adds a new node at the beginning of a list
-  * @head: The original linked list
-  * @str: The string to add to the node
-  *
-  * Return: The address of the new list or NULL if it failed
-  */
+ * add_node - add new node to list
+ * @head: head node
+ * @str: string of node
+ * Return: address of new element
+ */
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *temp;
+	char *string;
+	list_t *node;
 
-	if (head != NULL && str != NULL)
-	{
-		temp = malloc(sizeof(list_t));
-		if (temp == NULL)
-			return (NULL);
+	if (!head || !str)
+		return (0);
 
-		temp->str = strdup(str);
-		temp->len = _strlen(str);
-		temp->next = *head;
+	string = strdup(str);
 
-		*head = temp;
-
-		return (temp);
-	}
-
-	return (0);
+	if (!string)
+		return (0);
+	node = malloc(sizeof(list_t));
+	if (!node)
+		return (0);
+	node->str = string;
+	node->len = _strlen(string);
+	node->next = *head;
+	*head = node;
+	return (node);
 }
-
 /**
-  * _strlen - Returns the length of a string
-  * @s: String to count
-  *
-  * Return: String length
-  */
-int _strlen(const char *s)
+ * _strlen - Swaps integers wih pointers.
+ * @s: is a pointer to a char
+ * Return: Always 0.
+ */
+int _strlen(char *s)
 {
-	int c = 0;
+	int i = 0;
 
-	while (*s)
+	if (!s)
+		return (0);
+	while (*(s + i) != '\0')
 	{
-		s++;
-		c++;
+		i++;
 	}
-
-	return (c);
+	return (i);
 }
